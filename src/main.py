@@ -24,12 +24,12 @@ app = create_app()
 
 if __name__ == '__main__':
     print("\n" + "="*60)
-    print("🚀 INICIANDO BACKEND FLASK")
+    print("INICIANDO BACKEND FLASK")
     print("="*60)
-    print(f"📊 Base de Datos: {settings.DB_NAME}")
-    print(f"🖥️  Servidor: {settings.DB_SERVER}")
-    print(f"🌐 Puerto: {settings.FLASK_PORT}")
-    print(f"🔧 Debug: {settings.FLASK_DEBUG}")
+    print(f"Base de Datos: {settings.DB_NAME}")
+    print(f"Servidor: {settings.DB_SERVER}")
+    print(f"Puerto: {settings.FLASK_PORT}")
+    print(f"Debug: {settings.FLASK_DEBUG}")
     print("="*60 + "\n")
     
     app.run(

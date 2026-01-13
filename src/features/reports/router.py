@@ -5,9 +5,10 @@ from .service import ReporteHornosService
 
 reportes_bp = Blueprint('reportes', __name__, url_prefix='/api/reportes')
 
-@reportes_bp.route('/hornos', methods=['POST'])
+@reportes_bp.route('/hornos', methods=['GET', 'POST'])
 def obtener_reporte_hornos():
     """
+    GET /api/reportes/hornos?fecha_desde=2025-01-01&fecha_hasta=2026-01-31&numero_ot=OT-12345
     POST /api/reportes/hornos
     Body JSON:
     {
@@ -17,12 +18,24 @@ def obtener_reporte_hornos():
     }
     """
     try:
-        # Obtener parámetros del body JSON
-        data = request.get_json()
-        
-        fecha_desde = data.get('fecha_desde') if data else None
-        fecha_hasta = data.get('fecha_hasta') if data else None
-        numero_ot = data.get('numero_ot') if data else None
+        # Determinar si es GET o POST y obtener parámetros
+        if request.method == 'GET':
+            # Obtener parámetros de query string
+            fecha_desde = request.args.get('fecha_desde')
+            fecha_hasta = request.args.get('fecha_hasta')
+            numero_ot = request.args.get('numero_ot')
+        else:  # POST
+            # Verificar si hay JSON en el body
+            if request.is_json:
+                data = request.get_json()
+                fecha_desde = data.get('fecha_desde')
+                fecha_hasta = data.get('fecha_hasta')
+                numero_ot = data.get('numero_ot')
+            else:
+                # Fallback a query params si no hay JSON
+                fecha_desde = request.args.get('fecha_desde')
+                fecha_hasta = request.args.get('fecha_hasta')
+                numero_ot = request.args.get('numero_ot')
         
         # Obtener conexión
         with db.get_connection() as conn:

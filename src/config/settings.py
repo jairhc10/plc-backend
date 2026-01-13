@@ -34,10 +34,10 @@ class Settings:
         
         if missing:
             raise ValueError(
-                f"❌ Faltan configuraciones obligatorias en .env: {', '.join(missing)}"
+                f"Faltan configuraciones obligatorias en .env: {', '.join(missing)}"
             )
         
-        print("✅ Configuración validada correctamente")
+        print("Configuración validada correctamente")
 
 # Instancia global
 settings = Settings()

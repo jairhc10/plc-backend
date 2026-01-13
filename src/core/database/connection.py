@@ -47,14 +47,14 @@ class DatabaseConnection:
                 autoflush=False
             )
             
-            print("✅ Motor de base de datos inicializado")
+            print("Motor de base de datos inicializado")
     
     @property
     def engine(self) -> Engine:
         """Obtener el motor de base de datos"""
         if self._engine is None:
             raise RuntimeError(
-                "❌ Database no inicializada. Llama a db.initialize() primero."
+                "Database no inicializada. Llama a db.initialize() primero."
             )
         return self._engine
     
@@ -92,7 +92,7 @@ class DatabaseConnection:
             
             return {
                 "success": True,
-                "message": "✅ Conexión exitosa a SQL Server",
+                "message": "Conexión exitosa a SQL Server",
                 "server_time": str(fecha),
                 "server_version": version[:100] + "..." if len(version) > 100 else version
             }
@@ -100,7 +100,7 @@ class DatabaseConnection:
         except Exception as e:
             return {
                 "success": False,
-                "message": "❌ Error de conexión",
+                "message": "Error de conexión",
                 "error": str(e)
             }
 

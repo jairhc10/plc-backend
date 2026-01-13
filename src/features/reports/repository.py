@@ -37,7 +37,7 @@ class ReporteHornosRepository:
                     WHERE TH.Fecha_Hora >= CAST(TB.Fecha_Registro AS DATE)
                       AND TH.Fecha_Hora < DATEADD(DAY, 1, CAST(TB.Fecha_Registro AS DATE))
                     ORDER BY TH.Fecha_Hora
-                ) AS TEMPERATURA_HORNO1,
+                ) AS [TEMPERATURA HORNO1],
                 -- HORNO 2
                 (
                     SELECT TOP 1 TH.Temp_Horno_02
@@ -45,7 +45,7 @@ class ReporteHornosRepository:
                     WHERE TH.Fecha_Hora >= CAST(TB.Fecha_Registro AS DATE)
                       AND TH.Fecha_Hora < DATEADD(DAY, 1, CAST(TB.Fecha_Registro AS DATE))
                     ORDER BY TH.Fecha_Hora
-                ) AS TEMPERATURA_HORNO2,
+                ) AS [TEMPERATURA HORNO2],
                 -- HORNO 3
                 (
                     SELECT TOP 1 TH.Temp_Horno_03
@@ -53,7 +53,7 @@ class ReporteHornosRepository:
                     WHERE TH.Fecha_Hora >= CAST(TB.Fecha_Registro AS DATE)
                       AND TH.Fecha_Hora < DATEADD(DAY, 1, CAST(TB.Fecha_Registro AS DATE))
                     ORDER BY TH.Fecha_Hora
-                ) AS TEMPERATURA_HORNO3,
+                ) AS [TEMPERATURA HORNO3],
                 -- HORNO 4
                 (
                     SELECT TOP 1 TH.Temp_Horno_04
@@ -61,7 +61,7 @@ class ReporteHornosRepository:
                     WHERE TH.Fecha_Hora >= CAST(TB.Fecha_Registro AS DATE)
                       AND TH.Fecha_Hora < DATEADD(DAY, 1, CAST(TB.Fecha_Registro AS DATE))
                     ORDER BY TH.Fecha_Hora
-                ) AS TEMPERATURA_HORNO4,
+                ) AS [TEMPERATURA HORNO4],
                 -- HORNO 5
                 (
                     SELECT TOP 1 TH.Temp_Horno_05
@@ -69,7 +69,7 @@ class ReporteHornosRepository:
                     WHERE TH.Fecha_Hora >= CAST(TB.Fecha_Registro AS DATE)
                       AND TH.Fecha_Hora < DATEADD(DAY, 1, CAST(TB.Fecha_Registro AS DATE))
                     ORDER BY TH.Fecha_Hora
-                ) AS TEMPERATURA_HORNO5,
+                ) AS [TEMPERATURA HORNO5],
                 -- HORNO 6
                 (
                     SELECT TOP 1 TH.Temp_Horno_06
@@ -77,7 +77,7 @@ class ReporteHornosRepository:
                     WHERE TH.Fecha_Hora >= CAST(TB.Fecha_Registro AS DATE)
                       AND TH.Fecha_Hora < DATEADD(DAY, 1, CAST(TB.Fecha_Registro AS DATE))
                     ORDER BY TH.Fecha_Hora
-                ) AS TEMPERATURA_HORNO6,
+                ) AS [TEMPERATURA HORNO6],
                 -- HORNO 7
                 (
                     SELECT TOP 1 TH.Temp_Horno_07
@@ -85,7 +85,7 @@ class ReporteHornosRepository:
                     WHERE TH.Fecha_Hora >= CAST(TB.Fecha_Registro AS DATE)
                       AND TH.Fecha_Hora < DATEADD(DAY, 1, CAST(TB.Fecha_Registro AS DATE))
                     ORDER BY TH.Fecha_Hora
-                ) AS TEMPERATURA_HORNO7
+                ) AS [TEMPERATURA HORNO7]
             FROM TBL_DATOS_PROCESO TB
             CROSS APPLY (
                 SELECT

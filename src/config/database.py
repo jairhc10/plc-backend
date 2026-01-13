@@ -23,6 +23,6 @@ def get_database_url() -> str:
     
     database_url = f"mssql+pyodbc:///?odbc_connect={params}"
     
-    print(f"📊 Conectando a: {settings.DB_SERVER}/{settings.DB_NAME}")
+    print(f"Conectando a: {settings.DB_SERVER}/{settings.DB_NAME}")
     
     return database_url
