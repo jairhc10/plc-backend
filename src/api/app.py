@@ -6,7 +6,9 @@ from flask import Flask
 from flask_cors import CORS
 from config.settings import settings
 from core.database.connection import db
+from flask_jwt_extended import JWTManager
 from api.middlewares.error_handle import register_error_handlers
+from api.auth.auth_routes import auth_bp
 
 # Importar blueprints
 from features.tables.router import tables_bp
@@ -25,6 +27,10 @@ def create_app() -> Flask:
     # Configurar CORS
     CORS(app, origins=settings.CORS_ORIGINS)
     
+    #JWT
+    app.config['JWT_SECRET_KEY'] = settings.JWT_SECRET_KEY
+    jwt = JWTManager(app)
+    
     # Inicializar base de datos
     db.initialize(echo=settings.FLASK_DEBUG)
     
@@ -35,6 +41,9 @@ def create_app() -> Flask:
     app.register_blueprint(tables_bp)
     
     app.register_blueprint(reportes_bp)
+    
+    #AUTH
+    app.register_blueprint(auth_bp)
     
     # ==========================================
     # RUTAS RAÍZ
