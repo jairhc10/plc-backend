@@ -13,6 +13,7 @@ from api.auth.auth_routes import auth_bp
 # Importar blueprints
 from features.tables.router import tables_bp
 from features.reports.router import reportes_bp
+import socket
 
 def create_app() -> Flask:
     """
@@ -79,5 +80,16 @@ def create_app() -> Flask:
                 "environment": settings.FLASK_ENV
             }
         }
+    
+    if __name__ == '__main__':
+        app = create_app()
+        hostname = socket.gethostname()
+        local_ip = socket.gethostbyname(hostname)
+        app.run(
+            host ='0.0.0.0',
+            port = 5000,
+            debug = True,
+            threaded = True
+        )
     
     return app
