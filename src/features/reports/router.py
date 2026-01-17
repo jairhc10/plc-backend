@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+# from flask_jwt_extended import jwt_required
 from core.database.connection import db
 from .repository import ReporteHornosRepository
 from .service import ReporteHornosService
@@ -6,6 +7,7 @@ from .service import ReporteHornosService
 reportes_bp = Blueprint('reportes', __name__, url_prefix='/api/reportes')
 
 @reportes_bp.route('/hornos', methods=['GET', 'POST'])
+# @jwt_required()
 def obtener_reporte_hornos():
     """
     GET /api/reportes/hornos?fecha_desde=2025-01-01&fecha_hasta=2026-01-31&numero_ot=OT-12345

@@ -3,6 +3,7 @@ Punto de entrada de la aplicación
 """
 import sys
 from pathlib import Path
+import socket
 
 # Agregar src/ al path de Python
 src_path = Path(__file__).parent
@@ -23,17 +24,24 @@ except ValueError as e:
 app = create_app()
 
 if __name__ == '__main__':
-    print("\n" + "="*60)
-    print("INICIANDO BACKEND FLASK")
-    print("="*60)
-    print(f"Base de Datos: {settings.DB_NAME}")
-    print(f"Servidor: {settings.DB_SERVER}")
-    print(f"Puerto: {settings.FLASK_PORT}")
-    print(f"Debug: {settings.FLASK_DEBUG}")
-    print("="*60 + "\n")
+    app = create_app()
+    
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    
+    print("\n" + "="*70)
+    print("🔥 BACKEND FLASK - SISTEMA MODEPSA")
+    print("="*70)
+    print(f"🌐 Local:    http://localhost:5000")
+    print(f"🌐 Red:      http://{local_ip}:5000")
+    print(f"🔍 Health:   http://{local_ip}:5000/health")
+    print(f"🧪 Test DB:  http://{local_ip}:5000/test-db")
+    print("="*70)
+    print("✅ Presiona Ctrl+C para detener\n")
     
     app.run(
-        debug=settings.FLASK_DEBUG,
         host='0.0.0.0',
-        port=settings.FLASK_PORT
+        port=5000,
+        debug=True,
+        threaded=True
     )
