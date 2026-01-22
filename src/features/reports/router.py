@@ -171,7 +171,7 @@ def exportar_reporte_hornos_excel():
         headers = [
             ("Fecha Registro", 20),
             ("Número OT", 15),
-            ("Peso Unit.", 12),
+            ("Tiempo Asignado.", 12),
             ("Peso Total", 12),
             ("Fecha Fin Manual", 18),
             ("Fecha Fin Auto", 18),

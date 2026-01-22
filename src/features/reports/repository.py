@@ -16,7 +16,7 @@ class ReporteHornosRepository:
             SELECT 
                 TB.Fecha_Registro,
                 TB.Numero_OT, 
-                TB.Peso_Unitario,
+                TB.Tiempo_Asignado,
                 TB.Peso_Total,
                 TB.Fecha_Fin_Manual,
                 TB.Fecha_Fin_Auto,
@@ -128,7 +128,7 @@ class ReporteHornosRepository:
             SELECT 
                 TB.Fecha_Registro,
                 TB.Numero_OT, 
-                TB.Peso_Unitario,
+                TB.Tiempo_Asignado,
                 TB.Peso_Total,
                 TB.Fecha_Fin_Manual,
                 TB.Fecha_Fin_Auto,
